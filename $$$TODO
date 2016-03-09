@@ -1,0 +1,19 @@
+change login controller to sessions
+  new create and destroy actions
+      login       logout
+
+def create
+  teacher = Teacher.find_by_email(params[:email])
+  if teacher && teacher.authenticate(params[:password])
+    session[:teacher_id] = teacher.id
+    redirect_to root_path, notice = "words"
+  else
+    flash.now[:alert] = "log out"
+  end
+end
+
+get 'login' => 'sessions#new'
+post 'login' => 'sessions#create'
+delete 'logout' => 'sessions#destroy'
+
+resources :sessions, only: [:new, :create, :destroy]
