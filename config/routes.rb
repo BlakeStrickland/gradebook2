@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+
+  post 'admin/login'
+
+  get 'admin/login'
+  get 'admin/logout'
+  root 'admin#login'
+
+  # namespace :admin do
+  #
+  #   root to: "#index"
+  # end
+
   resources :parents
   resources :students
   resources :teachers
