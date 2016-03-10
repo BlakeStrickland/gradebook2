@@ -7,3 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 t = Teacher.create(name: "Bill Nye", email: "Billnye@scienceguy.com", password: "ScienceRules")
+
+s = Student.create(name: "Bobby", email: "tables@mail.com", password: "password", teacher_id: 1)
+
+p = Parent.create(name: "Bob", email: "Bob@mail.com", password: "password", student_id: 1)
+
+g = Grade.create(score: 80.00, student_id: 1, name: 'volcano')

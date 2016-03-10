@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :grades
   root 'dashboard#index'
   get 'sessions/create'
   post 'sessions/create'

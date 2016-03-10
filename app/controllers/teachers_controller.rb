@@ -5,7 +5,7 @@ class TeachersController < ApplicationController
   # GET /teachers
   # GET /teachers.json
   def index
-    @teachers = Teacher.all
+    @teachers = Teacher.where(id: session[:user_id])
   end
 
   # GET /teachers/1
@@ -25,16 +25,20 @@ class TeachersController < ApplicationController
   # POST /teachers
   # POST /teachers.json
   def create
-    @teacher = Teacher.new(teacher_params)
+    if session[:user_type] == 'Teacher'
+      @teacher = Teacher.new(teacher_params)
 
-    respond_to do |format|
-      if @teacher.save
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
-        format.json { render :show, status: :created, location: @teacher }
-      else
-        format.html { render :new }
-        format.json { render json: @teacher.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @teacher.save
+          format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
+          format.json { render :show, status: :created, location: @teacher }
+        else
+          format.html { render :new }
+          format.json { render json: @teacher.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to root_path, notice: "Nice try, you need to be a teacher!"
     end
   end
 

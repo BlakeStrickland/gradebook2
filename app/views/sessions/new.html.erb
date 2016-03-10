@@ -2,5 +2,13 @@
 <%= form_tag(sessions_create_path)do %>
   <div>Email: <%= text_field_tag :email %></div>
   <div>Password: <%= password_field_tag :password %></div>
+
+  <%= radio_button_tag(:user_type, "Teacher") %>
+  <%= label_tag(:user_type, "I am a teacher") %>
+  <%= radio_button_tag(:user_type, "Parent") %>
+  <%= label_tag(:user_type, "I am a Parent") %>
+  <%= radio_button_tag(:user_type, "Student") %>
+  <%= label_tag(:user_typ, "I am a student") %>
+
   <%= submit_tag :submit %>
 <% end %>
