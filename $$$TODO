@@ -2,10 +2,14 @@ change login controller to sessions
   new create and destroy actions
       login       logout
 
+new view
+  form_tag
+
 def create
   teacher = Teacher.find_by_email(params[:email])
   if teacher && teacher.authenticate(params[:password])
-    session[:teacher_id] = teacher.id
+  session[:user_id] = teacher.id
+  session[:user_type] = "Teacher"
     redirect_to root_path, notice = "words"
   else
     flash.now[:alert] = "log out"

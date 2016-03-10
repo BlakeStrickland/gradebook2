@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  root 'dashboard#index'
+  get 'sessions/create'
+  post 'sessions/create'
 
-  post 'admin/login'
+  get 'sessions/destroy'
 
-  get 'admin/login'
-  get 'admin/logout'
-  root 'admin#login'
+  get 'sessions/new'
+
 
   # namespace :admin do
   #

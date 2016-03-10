@@ -1,0 +1,6 @@
+<p>Please enter your credentials to continue:</p>
+<%= form_tag(sessions_create_path)do %>
+  <div>Email: <%= text_field_tag :email %></div>
+  <div>Password: <%= password_field_tag :password %></div>
+  <%= submit_tag :submit %>
+<% end %>
